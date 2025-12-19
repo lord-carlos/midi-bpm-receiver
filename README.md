@@ -1,4 +1,4 @@
-# MIDI BPM Receiver
+# MIDI Clock Receiver and bpm calculator
 
 A Python tool to receive MIDI clock and calculate BPM, stability, and jitter.
 
