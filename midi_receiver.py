@@ -50,7 +50,14 @@ def main():
 
     try:
         with mido.open_input(port_name) as inport:
-            for msg in inport:
+            while True:
+                # poll() returns None immediately if no message is waiting
+                msg = inport.poll()
+                
+                if msg is None:
+                    time.sleep(0.001)  # Small sleep to prevent high CPU usage
+                    continue
+
                 if msg.type == 'clock':
                     current_time = time.time()
                     if last_tick_time is not None:
